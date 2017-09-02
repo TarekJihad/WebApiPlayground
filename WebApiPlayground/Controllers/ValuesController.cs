@@ -11,7 +11,7 @@ namespace WebApiPlayground.Controllers
     {
         public IHttpActionResult Post(GuidValue val)
         {
-            // Do what you want with guid
+            // Do what you want with Guid (val.Id)
             return Created("", val);
         }
     }
