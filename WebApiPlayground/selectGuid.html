@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="padding:200px 0">
+        <select name="customer" id="customer">
+            <option value="123455a4-e276-4711-9ea4-8299ce9804dc">value 1</option>
+            <option value="989555a4-e276-4711-9ea4-829233114422">value 2</option>
+            <option value="148634a4-e276-4711-9ea4-8299ce654444">value 3</option>
+        </select>
+
+        <button type="button" id="btnSubmit">Submit</button>
+    </div>
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $('#customer').on('change', function () {
+            postGuid($(this).val());
+        });
+
+        $('#btnSubmit').on('click', function () {
+            postGuid($('#customer').val());
+        });
+        function postGuid(guid) {
+            $.post('api/values',
+                {
+                    Id: guid
+                },
+                function (data, status) {
+                    alert(status + " : " + data.Id);
+                });
+        }
+    </script>
+</body>
+</html>
